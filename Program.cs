@@ -4,6 +4,7 @@ using Learn_Parallel._1_TaskProgramming._3_WaitingForTimeToPass;
 using Learn_Parallel._1_TaskProgramming._4_WaitingForTasks;
 using Learn_Parallel._1_TaskProgramming._5_ExceptionHandling;
 using Learn_Parallel._2_DataSharing_Synchronization._1_CriticalSections;
+using Learn_Parallel._2_DataSharing_Synchronization._2_InterlockedOperations;
 using System;
 using System.Threading.Tasks;
 
@@ -23,7 +24,8 @@ namespace Demo
             #endregion
 
             #region "2_DataSharing&Synchronization"
-            CriticalSections.Start();
+            //CriticalSections.Start();
+            InterlockedOperations.Start();
             #endregion
         }
     }
