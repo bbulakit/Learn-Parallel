@@ -13,6 +13,13 @@ namespace Demo
                 Console.Write(c);
             }
         }
+
+        public static void Write(object o)
+        {
+            int i = 1000;
+            while (i-- > 0) Console.Write(o);
+        }
+
         public static void Main()
         {
             Task.Factory.StartNew(() => Write('*')); //Thread1
