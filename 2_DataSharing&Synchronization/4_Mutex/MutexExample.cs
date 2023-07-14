@@ -13,15 +13,25 @@ namespace Learn_Parallel._2_DataSharing_Synchronization._4_Mutex
             var tasks = new List<Task>();
             var ba = new BankAccount();
 
- 
-            
+            Mutex mutex = new Mutex();
+
             for (int i = 0; i < 10; i++)
             {
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
                     for (int j = 0; j < 1000; j++)
                     {
-                        ba.Deposit(100);
+                        //This ensures that only one thread can access the shared resource at a time
+                        bool haveLock = mutex.WaitOne();
+                        try
+                        {
+                            ba.Deposit(100);
+                        }
+                        finally
+                        {
+                            //assuming the lock was acquired successfully
+                            if (haveLock) mutex.ReleaseMutex(); 
+                        }                        
                     }
                 }));
 
@@ -29,7 +39,17 @@ namespace Learn_Parallel._2_DataSharing_Synchronization._4_Mutex
                 {
                     for (int j = 0; j < 1000; j++)
                     {
-                        ba.WithDraw(100);
+                        //This ensures that only one thread can access the shared resource at a time
+                        bool haveLock = mutex.WaitOne();
+                        try
+                        {
+                            ba.WithDraw(100);
+                        }
+                        finally
+                        {
+                            //assuming the lock was acquired successfully
+                            if (haveLock) mutex.ReleaseMutex();
+                        }                        
                     }
                 }));
             }
@@ -50,5 +70,6 @@ namespace Learn_Parallel._2_DataSharing_Synchronization._4_Mutex
         {
                 Balance -= amount;
         }
+
     }
 }
