@@ -37,14 +37,24 @@ namespace Learn_Parallel._2_DataSharing_Synchronization._1_CriticalSections
     }
     public class BankAccount
     {
+        public object padLock = new object();
         public int Balance { get; private set; }
         public void Deposit(int amount)
         {
-            Balance += amount;
+            // += ; not atomic operation
+            // op1: temp <- get_Balance() + amount
+            // op2: set_Balance(temp)
+            lock (padLock)
+            {
+                Balance += amount;
+            }            
         }
         public void WithDraw(int amount)
-        {
-            Balance -= amount;
+        {            
+            lock (padLock)
+            {                          
+                Balance -= amount;
+            }
         }
     }
 }
