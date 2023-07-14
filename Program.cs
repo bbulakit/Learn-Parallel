@@ -7,6 +7,7 @@ using Learn_Parallel._2_DataSharing_Synchronization._1_CriticalSections;
 using Learn_Parallel._2_DataSharing_Synchronization._2_InterlockedOperations;
 using Learn_Parallel._2_DataSharing_Synchronization._3_SpinLocking_LockRecursion;
 using Learn_Parallel._2_DataSharing_Synchronization._4_Mutex;
+using Learn_Parallel._2_DataSharing_Synchronization._5_Reader_WriterLocks;
 using System;
 using System.Threading.Tasks;
 
@@ -30,7 +31,9 @@ namespace Demo
             //InterlockedOperations.Start();
             //SpinLocking.Start();
             //LockRecursion.Start(); //Showing SpinLock doesn't support Lock Recursion --> Dangerous
-            MutexExample.Start();
+            //MutexExample.Start();
+            //GlobalMutexExample.Start(); //Need open application .exe 2 instances
+            ReaderWriterExample.Start();
             #endregion
         }
     }

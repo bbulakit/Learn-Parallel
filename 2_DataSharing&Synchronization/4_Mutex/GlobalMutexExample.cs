@@ -8,7 +8,7 @@ namespace Learn_Parallel._2_DataSharing_Synchronization._4_Mutex
 {
     internal class GlobalMutexExample
     {
-        public static void Start(string[] args)
+        public static void Start()
         {
             //Open 2 applcation .exe which invoke this method.
             //First time open .exe the message "We can run the program just fine." will show up.
