@@ -33,8 +33,11 @@ namespace Demo
             var task1 = new Task<int>(TextLength, text1);
             task1.Start();
 
-            Task.Factory.StartNew<int>(() => TextLength(text2));
-            
+            Task<int> task2 = Task.Factory.StartNew<int>(() => TextLength(text2));
+
+            Console.WriteLine($"Length of '{text1}' is {task1.Result}");
+            Console.WriteLine($"Length of '{text2}' is {task2.Result}");
+
             Console.WriteLine("Main program done.");
             Console.ReadKey();
         }
