@@ -12,21 +12,43 @@ namespace Learn_Parallel._2_DataSharing_Synchronization._3_SpinLocking_LockRecur
         {
             var tasks = new List<Task>();
             var ba = new BankAccount();
+
+            SpinLock sl = new SpinLock();
+            //spin the thread without yielding until able to execute.
+
             for (int i = 0; i < 10; i++)
             {
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
                     for (int j = 0; j < 1000; j++)
                     {
-                        ba.Deposit(100);
-                    }
+                        var lockTaken = false;
+                        try
+                        {
+                            sl.Enter(ref lockTaken);
+                            ba.Deposit(100);
+                        }
+                        finally
+                        {
+                            if (lockTaken) sl.Exit();
+                        }
+                    }                    
                 }));
 
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
                     for (int j = 0; j < 1000; j++)
                     {
-                        ba.WithDraw(100);
+                        var lockTaken = false;
+                        try
+                        {
+                            sl.Enter(ref lockTaken);
+                            ba.WithDraw(100);
+                        }
+                        finally
+                        {
+                            if (lockTaken) sl.Exit();
+                        }                        
                     }
                 }));
             }
