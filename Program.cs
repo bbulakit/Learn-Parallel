@@ -1,5 +1,6 @@
 ﻿using Learn_Parallel._1_TaskProgramming._1_TasksCreatingAndStarting;
 using Learn_Parallel._1_TaskProgramming._2_CancellingTasks;
+using Learn_Parallel._1_TaskProgramming._3_WaitingForTimeToPass;
 using System;
 using System.Threading.Tasks;
 
@@ -11,7 +12,8 @@ namespace Demo
         {
             //TaskCreatingAndStarting.Start();
             //CancellingTasks.Start();
-            CancellingTasks.Start2();
+            //CancellingTasks.Start2();
+            WaitingForTimeToPass.Start();
         }
     }
 }
