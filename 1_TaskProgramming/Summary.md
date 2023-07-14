@@ -1,56 +1,58 @@
 # Task Programming Content
 [1.Tasks](#Tasks)\
 [2.Cancellation](#Cancellation)
+[3.Waiting for Time to Pass](#waiting-for-time-to-pass)
+[4.Waiting for Tasks](#waiting-for-tasks)
+[5.Exception Handling](#exception-handling)
 
-
-## Tasks
-### Task is a unit of work that takes a function
+## 1. Tasks
+### 1. Task is a unit of work that takes a function
 * new Task(function), t.Start()
 * Task.Factory.StartNew(function)
 
-### Tasks can be passed an object
-### Tasks can return values
+### 2. Tasks can be passed an object
+### 3. Tasks can return values
 * new Task<T>, task.Result
 
-### Tasks can report their state
+### 4. Tasks can report their state
 * task.IsCompleted, task.IsFaulted, etc.
 
-## Cancellation
-### Cancellation of tasks is supported via
+## 2. Cancellation
+### 1. Cancellation of tasks is supported via
 * CancellationTokenSource, which returns a
 * CanncellationToken token = cts.Token
 
-### The token is passed into the function
+### 2. The token is passed into the function
 * E.g., Task.Factory.StartNew(..., token)
 
-### To cancel, we call cts.Cancel()
+### 3. To cancel, we call cts.Cancel()
 
-### cancellation is cooperative
+### 4. cancellation is cooperative
 * Task can check token.IsCancellationRequested and 'soft fail' or
 * Throw an exception via token. ThrowIfCancellationRequested()
 
-## Waiting for Time to Pass
-### Thread.Sleep(msec)
-### token.WaitHandle.WaitOne(msec)
+## 3. Waiting for Time to Pass
+### 1. Thread.Sleep(msec)
+### 2. token.WaitHandle.WaitOne(msec)
 * Returns a bool indicating whether cancellation was requested in the time period specified
-### Thread.SpinWait()
+### 3. Thread.SpinWait()
 * SpiNWait.SpinUntil(function)
 * Spin waiting does not give up the thread's turn
 
-## Waiting for Tasks
-### Waiting for single task
+## 4. Waiting for Tasks
+### 1. Waiting for single task
 * task.Wait(optional timeout)
-### Waiting for several tasks
+### 2. Waiting for several tasks
 * task.WaitAll(t, t2)
 * task.WaitAny(t, t2)
-### WaitAny/WaitAll will throw on cancellation
+### 3. WaitAny/WaitAll will throw on cancellation
 
-## ExceptionHandling
-### An unobserved task exception will not get handled
-### task.Wait() or Task.WaitAny()/WaitAll() will catch an...
+## 5. Exception Handling
+### 1. An unobserved task exception will not get handled
+### 2. task.Wait() or Task.WaitAny()/WaitAll() will catch an...
 * AggregateException
 * Use ae.InnerExceptions to iterate all exceptions caught
 * Use ae.Handle(e => {...}) to selectively handle exceptions
 ** Return true if handled, false otherwise
-### Note: there are ways of handling unobserved exceptions
+### 3. Note: there are ways of handling unobserved exceptions
 * They are tricky and unreliable
