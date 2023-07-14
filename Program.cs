@@ -27,7 +27,8 @@ namespace Demo
             #region "2_DataSharing&Synchronization"
             //CriticalSections.Start();
             //InterlockedOperations.Start();
-            SpinLocking_LockRecursion.Start();
+            //SpinLocking.Start();
+            LockRecursion.Start(); //Showing SpinLock doesn't support Lock Recursion --> Dangerous
             #endregion
         }
     }
