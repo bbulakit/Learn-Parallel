@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Learn_Parallel._2_DataSharing_Synchronization._3_SpinLocking_LockRecursion
 {
-    internal class SpinLocking_LockRecursion
+    internal class SpinLocking
     {
         public static void Start()
         {
