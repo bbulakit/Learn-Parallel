@@ -10,7 +10,8 @@ namespace Demo
         public static void Main()
         {
             //TaskCreatingAndStarting.Start();
-            CancellingTasks.Start();
+            //CancellingTasks.Start();
+            CancellingTasks.Start2();
         }
     }
 }

@@ -50,5 +50,41 @@ namespace Learn_Parallel._1_TaskProgramming._2_CancellingTasks
             Console.WriteLine("CancellingTasks program done.");
             Console.ReadKey();
         }
+
+        public static void Start2()
+        {
+            var planned = new CancellationTokenSource();
+            var preventative = new CancellationTokenSource();
+            var emergency = new CancellationTokenSource();
+
+            var paranoid = CancellationTokenSource.CreateLinkedTokenSource(
+                planned.Token,
+                preventative.Token,
+                emergency.Token
+                );
+
+            Task.Factory.StartNew(() =>
+            {
+                int i = 0;
+                while (true)
+                {
+                    paranoid.Token.ThrowIfCancellationRequested();
+                    Console.WriteLine($"{i++}\t"); //inf. loop 
+                    Thread.Sleep(1000);
+                }
+            }, paranoid.Token);
+
+            Console.ReadKey();
+
+            /*Same results */
+            //emergency.Cancel();
+            //preventative.Cancel();
+            emergency.Cancel();
+
+            Console.WriteLine("CancellingTask2 program done.(CreateLinkedTokenSource example)");
+            Console.ReadKey();
+
+        }
+
     }
 }
