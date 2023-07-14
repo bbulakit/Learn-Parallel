@@ -19,16 +19,22 @@ namespace Demo
             int i = 1000;
             while (i-- > 0) Console.Write(o);
         }
+        
+        public static int TextLength(object o)
+        {
+            Console.WriteLine($"\nTask with id {Task.CurrentId} processing object {o}...");
+            return o.ToString().Length;
+        }
 
         public static void Main()
         {
-            Task.Factory.StartNew(() => Write('*')); //Thread1
+            string text1 = "testing", text2 = "this";
 
-            var t = new Task(() => Write('?')); //Thread2
-            t.Start();
+            var task1 = new Task<int>(TextLength, text1);
+            task1.Start();
 
-            Write('-'); //Main Thread
-
+            Task.Factory.StartNew<int>(() => TextLength(text2));
+            
             Console.WriteLine("Main program done.");
             Console.ReadKey();
         }
