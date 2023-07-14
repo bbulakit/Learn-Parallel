@@ -12,7 +12,13 @@ namespace Learn_Parallel._1_TaskProgramming._2_CancellingTasks
         {
             var cts = new CancellationTokenSource();
             var token = cts.Token;
-            
+
+            //optional, register as subscribing the event.
+            token.Register(() =>
+            {
+                Console.WriteLine("Cancellation has been requested");
+            });
+
             var t = new Task(() =>
             {
                 int i = 0;
@@ -26,6 +32,12 @@ namespace Learn_Parallel._1_TaskProgramming._2_CancellingTasks
                     Console.WriteLine($"{i++}\t"); //inf. loop                    
                 }
             }, token);
+
+            //optional, handle subscribed event after cancellation
+            Task.Factory.StartNew(() => {
+                token.WaitHandle.WaitOne();
+                Console.WriteLine("Wait handle released, cancellation was requested");
+            });
 
             // 1.Loop will run infinetely
             t.Start();//0, 1, 2, ..., inf.
