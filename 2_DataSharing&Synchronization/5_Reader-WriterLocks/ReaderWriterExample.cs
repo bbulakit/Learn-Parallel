@@ -9,7 +9,7 @@ namespace Learn_Parallel._2_DataSharing_Synchronization._5_Reader_WriterLocks
     internal class ReaderWriterExample
     {
 
-        static ReaderWriterLockSlim padLock = new ReaderWriterLockSlim();
+        static ReaderWriterLockSlim padLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
         static Random rand = new Random();
         public static void Start()
         {
@@ -20,8 +20,10 @@ namespace Learn_Parallel._2_DataSharing_Synchronization._5_Reader_WriterLocks
                 tasks.Add(Task.Factory.StartNew(() =>
                 {
                     padLock.EnterReadLock();
+                    padLock.EnterReadLock();
                     Console.WriteLine($"Entered read lock, x = {x}");
                     Task.Delay(5000).Wait();
+                    padLock.ExitReadLock();
                     padLock.ExitReadLock();
                     Console.WriteLine($"Exited read lock, x = {x}");
                 }));
