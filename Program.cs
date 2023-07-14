@@ -1,4 +1,5 @@
 ﻿using Learn_Parallel._1_TaskProgramming._1_TasksCreatingAndStarting;
+using Learn_Parallel._1_TaskProgramming._2_CancellingTasks;
 using System;
 using System.Threading.Tasks;
 
@@ -8,7 +9,8 @@ namespace Demo
     {
         public static void Main()
         {
-            TaskCreatingAndStarting.Start();
+            //TaskCreatingAndStarting.Start();
+            CancellingTasks.Start();
         }
     }
 }

@@ -17,10 +17,11 @@ namespace Learn_Parallel._1_TaskProgramming._2_CancellingTasks
             {
                 int i = 0;
                 while (true)
-                {                    
-                    if (token.IsCancellationRequested) 
+                {
+                    if (token.IsCancellationRequested)
                         // 4.Cancel flag triggered from cts.Cancel();
-                        break;                    
+                        //break;                    
+                        throw new OperationCanceledException();
                     Console.WriteLine($"{i++}\t"); //inf. loop                    
                 }
             }, token);
