@@ -42,7 +42,8 @@ namespace Demo
             #region "3_ConcurrentCollections"
             //ConcurrentDictionaryExample.Start();
             //ConcurrentQueueExample.Start();
-            ConcurrentQueueExample.Start2(); //Implement with Task.Run()
+            //ConcurrentQueueExample.Start2(); //Implement with Task.Run()
+            ConcurrentStackExample.Start();
             #endregion
         }
     }

@@ -11,6 +11,7 @@ namespace Learn_Parallel._3_ConcurrentCollections._2_Producer_ConsumerCollection
     {
         public static void Start()
         {
+            //Queue = FIFO
             var q = new ConcurrentQueue<int>();
             //producer
             q.Enqueue(1);
