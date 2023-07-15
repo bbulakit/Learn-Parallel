@@ -43,7 +43,8 @@ namespace Demo
             //ConcurrentDictionaryExample.Start();
             //ConcurrentQueueExample.Start();
             //ConcurrentQueueExample.Start2(); //Implement with Task.Run()
-            ConcurrentStackExample.Start();
+            //ConcurrentStackExample.Start();
+            ConcurrentBagExample.Start();
             #endregion
         }
     }
