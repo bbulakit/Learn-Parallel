@@ -8,8 +8,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="3_ConcurrentCollections\3_Producer-ConsumerPattern\" />
-  </ItemGroup>
-
 </Project>

@@ -10,6 +10,7 @@ using Learn_Parallel._2_DataSharing_Synchronization._4_Mutex;
 using Learn_Parallel._2_DataSharing_Synchronization._5_Reader_WriterLocks;
 using Learn_Parallel._3_ConcurrentCollections._1_ConcurrentDictionary;
 using Learn_Parallel._3_ConcurrentCollections._2_Producer_ConsumerCollections;
+using Learn_Parallel._3_ConcurrentCollections._3_Producer_ConsumerPattern;
 using System;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
@@ -44,7 +45,8 @@ namespace Demo
             //ConcurrentQueueExample.Start();
             //ConcurrentQueueExample.Start2(); //Implement with Task.Run()
             //ConcurrentStackExample.Start();
-            ConcurrentBagExample.Start();
+            //ConcurrentBagExample.Start();
+            BlockingCollectionExample.Start();
             #endregion
         }
     }
