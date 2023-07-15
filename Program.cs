@@ -8,6 +8,7 @@ using Learn_Parallel._2_DataSharing_Synchronization._2_InterlockedOperations;
 using Learn_Parallel._2_DataSharing_Synchronization._3_SpinLocking_LockRecursion;
 using Learn_Parallel._2_DataSharing_Synchronization._4_Mutex;
 using Learn_Parallel._2_DataSharing_Synchronization._5_Reader_WriterLocks;
+using Learn_Parallel._3_ConcurrentCollections._1_ConcurrentDictionary;
 using System;
 using System.Threading.Tasks;
 
@@ -37,7 +38,7 @@ namespace Demo
             #endregion
 
             #region "3_ConcurrentCollections"
-            
+            ConcurrentDictionaryExample.Start();
             #endregion
         }
     }
