@@ -12,6 +12,7 @@ using Learn_Parallel._3_ConcurrentCollections._1_ConcurrentDictionary;
 using Learn_Parallel._3_ConcurrentCollections._2_Producer_ConsumerCollections;
 using Learn_Parallel._3_ConcurrentCollections._3_Producer_ConsumerPattern;
 using Learn_Parallel._4_TaskCoordination._1_Continuations;
+using Learn_Parallel._4_TaskCoordination._2_ChildTasks;
 using System;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
@@ -53,7 +54,8 @@ namespace Demo
             //Getting multiple tasks to execute in a particular order
             #region "4_TaskCoordination"
             //ContinuaitionsExample.Start();
-            ContinuaitionsExample.Start2();
+            //ContinuationsExample.Start2();
+            ChildTasksExample.Start();
             #endregion
         }
     }
